@@ -12,24 +12,24 @@ const Experience = () => {
   const experiences = [
     {
       title: 'Graduated bootcamp',
-      company: 'Miami, FL',
-      period: '2019',
-      description: 'I graduated after 6 months of studying. I immediately found a job as a front-end developer.',
+      company: 'SMIT',
+      period: '2023',
+      description: 'I graduated after 8 months of studying. I immediately found a job as a front-end developer.',
       icon: '🎓',
       type: 'education'
     },
     {
       title: 'Front-End Developer',
-      company: 'Orlando, FL',
-      period: '2019 - 2021',
-      description: 'I worked as a front-end developer for 2 years in 1 job and 1 year in another job. I also upskilled to the full stack.',
+      company: 'Karachi, PK',
+      period: '2023 - 2024',
+      description: 'I worked as a front-end developer for 1 years as a freelancer. I also upskilled to the full stack.',
       icon: '💻',
       type: 'work'
     },
     {
       title: 'Full-Stack Developer',
-      company: 'Houston, TX',
-      period: '2021 - present',
+      company: 'Systems, PK',
+      period: '2025 - present',
       description: "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
       icon: '🚀',
       type: 'work'

@@ -30,39 +30,51 @@ const About = () => {
 
           {/* Content */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ delay: 0.4 }}
-            className="prose prose-lg max-w-none text-gray-700 leading-relaxed"
-          >
-            <p className="text-lg mb-6">
-              After graduating with a degree in Accounting, I decided to pursue my passion for programming. 
-              I enrolled in a coding bootcamp and learned full-stack web development. My favorite part of 
-              programming is the problem-solving aspect. I love the feeling of finally figuring out a solution 
-              to a problem.
-            </p>
-            
-            <p className="text-lg mb-6">
-              My core stack is <span className="font-semibold text-primary-600">React</span>,{' '}
-              <span className="font-semibold text-primary-600">Next.js</span>,{' '}
-              <span className="font-semibold text-primary-600">Node.js</span>, and{' '}
-              <span className="font-semibold text-primary-600">MongoDB</span>. I am also familiar with{' '}
-              <span className="font-semibold text-primary-600">TypeScript</span> and{' '}
-              <span className="font-semibold text-primary-600">Prisma</span>. I am always looking to learn 
-              new technologies.
-            </p>
-            
-            <p className="text-lg mb-6">
-              I am currently looking for a full-time position as a software developer.
-            </p>
-            
-            <p className="text-lg">
-              When I'm not coding, I enjoy playing video games, watching movies, and playing with my dog. 
-              I also enjoy learning new things. I am currently learning about history and philosophy. 
-              I'm also learning how to play the guitar.
-            </p>
-          </motion.div>
+  initial={{ opacity: 0, y: 20 }}
+  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+  transition={{ delay: 0.4 }}
+  className="prose prose-lg max-w-none text-gray-700 leading-relaxed"
+>
+  <h2 className="text-2xl font-bold text-gray-900 mb-4">Background</h2>
+  <p className="text-lg mb-6">
+    After graduating with a degree in Accounting, I decided to pursue my passion for programming. 
+    I enrolled in a coding bootcamp at Saylani Mass IT Training (SMIT), where I learned full-stack 
+    web development. My favorite part of programming is the problem-solving aspect—I love the thrill 
+    of finally figuring out a solution to a challenging problem.
+  </p>
 
+  <h2 className="text-2xl font-bold text-gray-900 mb-4">Technical Skills</h2>
+  <p className="text-lg mb-6">
+    My core stack is <span className="font-semibold text-primary-600">React</span>,{' '}
+    <span className="font-semibold text-primary-600">Next.js</span>,{' '}
+    <span className="font-semibold text-primary-600">Node.js</span>, and{' '}
+    <span className="font-semibold text-primary-600">MongoDB</span>. I am also familiar with{' '}
+    <span className="font-semibold text-primary-600">TypeScript</span> and{' '}
+    <span className="font-semibold text-primary-600">Prisma</span>. I am always eager to learn new 
+    technologies and am currently studying{' '}
+    <span className="font-semibold text-primary-600">Data Analytics, Cloud, and AI (DACA)</span> and{' '}
+    <a 
+      href="https://www.linkedin.com/company/governor-sindh-initiative/" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className="font-semibold text-primary-600 hover:underline"
+    >
+      AI agents through the Governor’s Initiative for GenAI
+    </a>.
+  </p>
+
+  <h2 className="text-2xl font-bold text-gray-900 mb-4">Career Goals</h2>
+  <p className="text-lg mb-6">
+    I am actively seeking a full-time position as a software developer, where I can apply my skills 
+    and continue to grow in a dynamic, innovative environment.
+  </p>
+
+  <h2 className="text-2xl font-bold text-gray-900 mb-4">Personal Interests</h2>
+  <p className="text-lg">
+    When I’m not coding, I enjoy playing video games, watching movies, and working as a rider for a 
+    company. I also love learning new things and exploring diverse interests.
+  </p>
+</motion.div>
           {/* Skills Preview */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

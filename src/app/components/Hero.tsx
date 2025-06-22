@@ -61,7 +61,7 @@ const Hero = () => {
               transition={{ delay: 0.4 }}
               className="text-xl sm:text-2xl text-gray-600 max-w-xl mx-auto md:mx-0"
             >
-              I'm a Full-Stack Developer with 2.5 years of experience. I enjoy building sites & apps. My focus is React (Next.js).
+              I'm a Full-Stack Developer with 1.5 years of experience. I enjoy building sites & apps. My focus is Next.js (React).
             </motion.p>
 
             {/* CTA Buttons */}

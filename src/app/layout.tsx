@@ -6,20 +6,20 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Ismail - Full-Stack Developer',
-  description: 'Full-Stack Developer with 2.5 years of experience. Specialized in React, Next.js, Node.js, and MongoDB.',
+  description: 'Full-Stack Developer with 1.5 years of experience. Specialized in React, Next.js, Node.js, and MongoDB.',
   keywords: ['Full-Stack Developer', 'React', 'Next.js', 'Node.js', 'MongoDB', 'TypeScript'],
   authors: [{ name: 'Ismail' }],
   creator: 'Ismail',
   openGraph: {
     title: 'Ismail - Full-Stack Developer',
-    description: 'Full-Stack Developer with 2.5 years of experience. Specialized in React, Next.js, Node.js, and MongoDB.',
+    description: 'Full-Stack Developer with 1.5 years of experience. Specialized in React, Next.js, Node.js, and MongoDB.',
     type: 'website',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Ismail - Full-Stack Developer',
-    description: 'Full-Stack Developer with 2.5 years of experience. Specialized in React, Next.js, Node.js, and MongoDB.',
+    description: 'Full-Stack Developer with 1.5 years of experience. Specialized in React, Next.js, Node.js, and MongoDB.',
   },
 }
 

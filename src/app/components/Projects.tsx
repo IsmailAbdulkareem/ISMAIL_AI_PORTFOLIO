@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { ExternalLink, Github } from 'lucide-react'
+import Image from 'next/image'
 
 const Projects = () => {
   const ref = useRef(null)
@@ -11,28 +12,52 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'CorpComment',
-      description: 'I worked as a full-stack developer on this startup project for 2 years. Users can give public feedback to companies.',
-      technologies: ['React', 'Next.js', 'MongoDB', 'Tailwind', 'Prisma'],
-      image: '/api/placeholder/400/250',
-      link: '#',
-      github: '#'
+      title: 'Mustafa Builder and Developer',
+      description: 'As a full-stack developer, I contributed to this construction company website for 2 months. The platform allows users to explore services, view projects, and submit inquiries, featuring a responsive design and user-friendly interface.',
+      technologies: ['React', 'Next.js', 'MongoDB', 'Tailwind'],
+      image: '/images/mustafa.jpg',
+      link: 'https://www.mustafabuilderanddeveloper.com.pk/',
+      github: 'https://github.com/IsmailAbdulkareem/MCB_SENCOND.git'
     },
     {
-      title: 'rmtDev',
-      description: 'Job board for remote developer jobs. I was the front-end developer. It has features like filtering, sorting and pagination.',
-      technologies: ['React', 'TypeScript', 'Next.js', 'Tailwind', 'Redux'],
-      image: '/api/placeholder/400/250',
-      link: '#',
-      github: '#'
+      title: 'Food Truck',
+      description: 'I served as the front-end developer for this food truck website, enabling users to browse menus, filter items, and explore services. The platform includes features like sorting, pagination, and a dynamic content management system.',
+      technologies: ['React', 'TypeScript', 'Next.js', 'Tailwind', 'Sanity'],
+      image: '/images/foodtruck.jpg',
+      link: 'https://milestone3-sooty-one.vercel.app/',
+      github: 'https://github.com/IsmailAbdulkareem/Milestone3.git'
     },
     {
-      title: 'Word Analytics',
-      description: 'A public web app for quick analytics on text. It shows word count, character count and social media post limits.',
-      technologies: ['React', 'Next.js', 'SQL', 'Tailwind', 'Framer'],
-      image: '/api/placeholder/400/250',
-      link: '#',
-      github: '#'
+      title: 'Free CV Maker',
+      description: 'Developed a public web app for creating and sharing professional CVs with unique, shareable links. The tool provides real-time text analytics, including word and character counts, and a streamlined user experience.',
+      technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind'],
+      image: '/images/cvmaker.jpg',
+      link: 'https://milestone-5-unique-path-and-shareable-link-swart.vercel.app/',
+      github: 'https://github.com/IsmailAbdulkareem/Milestone-5-Unique-Path-and-Shareable-Link.git'
+    },
+    {
+      title: 'Gym Website',
+      description: 'Built a responsive web application for a fitness center, showcasing services, class schedules, and membership options. The platform features a modern, user-friendly design with seamless navigation and dynamic content for an engaging user experience.',
+      technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind'],
+      image: '/images/gym.jpg',
+      link: 'https://responsive-gym-website-iota.vercel.app/',
+      github: 'https://github.com/IsmailAbdulkareem/Responsive-Gym-Website.git'
+    },
+    {
+      title: 'Weather Widget',
+      description: 'Created a customizable and responsive weather widget that provides real-time weather updates for any location. Easily embeddable in websites, it features a sleek design and user-friendly interface for displaying current conditions and forecasts.',
+      technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind'],
+      image: '/images/weather.jpg',
+      link: 'https://weather-widget-wheat-ten.vercel.app/',
+      github: 'https://github.com/IsmailAbdulkareem/Weather-Widget.git' // Placeholder, update with actual repo if available
+    },
+    {
+      title: 'Pizza Pie',
+      description: 'Developed a responsive website for a pizza restaurant, featuring an interactive menu, online ordering capabilities, and location details. The platform offers a visually appealing design and seamless user experience across devices.',
+      technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind'],
+      image: '/images/pizaa.jpg',
+      link: 'https://pizza-pie-lime.vercel.app/',
+      github: 'https://github.com/IsmailAbdulkareem/Pizza-Pie.git' // Placeholder, update with actual repo if available
     }
   ]
 
@@ -67,10 +92,14 @@ const Projects = () => {
                 className="bg-white rounded-lg shadow-md overflow-hidden card-hover"
               >
                 {/* Project Image */}
-                <div className="h-48 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center">
-                  <div className="text-4xl font-bold text-primary-600">
-                    {project.title.charAt(0)}
-                  </div>
+                <div className="h-48 w-full overflow-hidden flex items-center justify-center bg-gray-100">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={400}
+                    height={250}
+                    className="object-cover w-full h-full"
+                  />
                 </div>
 
                 {/* Project Content */}

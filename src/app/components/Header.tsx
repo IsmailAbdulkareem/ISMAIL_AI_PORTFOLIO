@@ -29,7 +29,10 @@ const Header = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href)
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      })
     }
     setIsMenuOpen(false)
   }
@@ -73,35 +76,40 @@ const Header = () => {
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden p-2 text-gray-700 hover:text-primary-600 transition-colors duration-200"
+            aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
-        <motion.nav
-          initial={{ opacity: 0, height: 0 }}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
           animate={{
             opacity: isMenuOpen ? 1 : 0,
-            height: isMenuOpen ? 'auto' : 0,
+            y: isMenuOpen ? 0 : -20,
           }}
-          className="md:hidden overflow-hidden"
+          transition={{ duration: 0.2 }}
+          className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} absolute top-16 left-0 right-0 bg-white shadow-lg`}
         >
-          <div className="py-4 space-y-4">
+          <div className="py-2 space-y-1 px-4">
             {navItems.map((item) => (
               <button
                 key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left text-gray-700 hover:text-primary-600 transition-colors duration-200 font-medium py-2"
+                onClick={(e) => {
+                  e.preventDefault()
+                  scrollToSection(item.href)
+                }}
+                className="block w-full text-left text-gray-700 hover:text-primary-600 transition-colors duration-200 font-medium py-3 px-4 rounded hover:bg-gray-50"
               >
                 {item.name}
               </button>
             ))}
           </div>
-        </motion.nav>
+        </motion.div>
       </div>
     </motion.header>
   )
 }
 
-export default Header 
+export default Header

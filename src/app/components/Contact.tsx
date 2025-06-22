@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react'
+import toast, { Toaster } from 'react-hot-toast'
 
 const Contact = () => {
   const ref = useRef(null)
@@ -18,16 +19,24 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    // Reset form
-    setFormData({ name: '', email: '', message: '' })
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      if (res.ok) {
+        toast.success('Message sent successfully!')
+        setFormData({ name: '', email: '', message: '' })
+      } else {
+        const data = await res.json()
+        toast.error(data.error || 'Message not sent!')
+      }
+    } catch (err) {
+      toast.error('Message not sent!')
+    }
     setIsSubmitting(false)
-    
-    // Show success message (you can implement a toast notification here)
-    alert('Message sent successfully!')
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -39,6 +48,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="section-padding bg-white">
+      <Toaster position="top-right" />
       <div className="container-max">
         <motion.div
           ref={ref}
@@ -67,8 +77,13 @@ const Contact = () => {
                 <h3 className="text-2xl font-semibold mb-6 text-gray-800">Get in Touch</h3>
                 <p className="text-gray-600 mb-8 leading-relaxed">
                   Please contact me directly at{' '}
-                  <a href="mailto:example@gmail.com" className="text-primary-600 hover:text-primary-700 font-medium">
-                    example@gmail.com
+                  <a 
+                    href="mailto:ismail233290@gmail.com" 
+                    className="text-primary-600 hover:text-primary-700 font-medium"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ismail233290@gmail.com
                   </a>{' '}
                   or through this form.
                 </p>
@@ -86,7 +101,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-800">Email</h4>
-                      <p className="text-gray-600">example@gmail.com</p>
+                      <p className="text-gray-600">ismail233290@gmail.com</p>
                     </div>
                   </motion.div>
 
@@ -101,7 +116,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-800">Phone</h4>
-                      <p className="text-gray-600">+1 (555) 123-4567</p>
+                      <p className="text-gray-600">+92 3303911285</p>
                     </div>
                   </motion.div>
 
@@ -116,7 +131,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-800">Location</h4>
-                      <p className="text-gray-600">Houston, TX, United States</p>
+                      <p className="text-gray-600">Mehran Town, Sector 6H A42, Karachi, Pakistan</p>
                     </div>
                   </motion.div>
                 </div>
@@ -131,9 +146,9 @@ const Contact = () => {
                   <h4 className="font-semibold text-gray-800 mb-4">Follow me</h4>
                   <div className="flex gap-4">
                     {[
-                      { icon: Github, href: '#', label: 'GitHub' },
-                      { icon: Linkedin, href: '#', label: 'LinkedIn' },
-                      { icon: Twitter, href: '#', label: 'Twitter' }
+                      { icon: Github, href: 'https://github.com/IsmailAbdulkareem', label: 'GitHub' },
+                      { icon: Linkedin, href: 'https://www.linkedin.com/in/ismail-abdul-kareem-233b302b3', label: 'LinkedIn' },
+                      { icon: Twitter, href: 'https://x.com/IsmailKare63834', label: 'Twitter' }
                     ].map((social, index) => (
                       <motion.a
                         key={social.label}
@@ -142,6 +157,8 @@ const Contact = () => {
                         href={social.href}
                         className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-primary-100 transition-colors duration-200"
                         aria-label={social.label}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <social.icon className="text-gray-600 hover:text-primary-600 transition-colors duration-200" size={20} />
                       </motion.a>
@@ -234,4 +251,4 @@ const Contact = () => {
   )
 }
 
-export default Contact 
+export default Contact

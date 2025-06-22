@@ -14,11 +14,11 @@ const Footer = () => {
   ]
 
   const socialLinks = [
-    { name: 'GitHub', icon: Github, href: 'https://github.com/your-profile' },
-    { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/in/your-profile' },
-    { name: 'X', icon: Twitter, href: 'https://twitter.com/your-profile' },
-    { name: 'Email', icon: Mail, href: 'mailto:your-email@example.com' },
-    { name: 'WhatsApp', icon: Phone, href: 'https://wa.me/your-number' },
+    { name: 'GitHub', icon: Github, href: 'https://github.com/IsmailAbdulkareem' },
+    { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/in/ismail-abdul-kareem-233b302b3' },
+    { name: 'X', icon: Twitter, href: 'https://x.com/IsmailKare63834' },
+    { name: 'Email', icon: Mail, href: 'mailto:ismail233290@gmail.com' },
+    { name: 'WhatsApp', icon: Phone, href: 'https://wa.me/+923303911285' },
   ]
 
   const scrollToSection = (href: string) => {
@@ -34,9 +34,12 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* About Section */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold">Ismail</h3>
-            <p className="text-gray-400">
-              A passionate Full-Stack Developer creating modern and responsive web applications.
+            <h3 className="text-xl font-bold">About Ismail</h3>
+            <p className="text-gray-400 leading-relaxed">
+              I'm a dedicated Full-Stack Developer with a background in Accounting, having transitioned to tech through a coding bootcamp at Saylani Mass IT Training (SMIT). 
+              I specialize in building modern, responsive web applications using <span className="font-semibold text-primary-300">React</span>,
+               <span className="font-semibold text-primary-300">Next.js</span>, <span className="font-semibold text-primary-300">Node.js</span>,
+                and <span className="font-semibold text-primary-300">MongoDB</span>, with proficiency in <span className="font-semibold text-primary-300">TypeScript</span> 
             </p>
           </div>
 
@@ -81,11 +84,11 @@ const Footer = () => {
           <p className="flex items-center justify-center gap-2 mb-2">
             Made by Ismail with <Heart className="text-red-500" size={18} />
           </p>
-          <p>&copy; {new Date().getFullYear()} Ismail. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Ismail. All rights reserved.</p>
         </div>
       </div>
     </footer>
   )
 }
 
-export default Footer 
+export default Footer
