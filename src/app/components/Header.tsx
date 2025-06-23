@@ -29,10 +29,7 @@ const Header = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href)
     if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      })
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
     setIsMenuOpen(false)
   }
@@ -45,8 +42,7 @@ const Header = () => {
         isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}
     >
-      {/* ✅ Ensure no horizontal scroll with max-w-screen and overflow-hidden */}
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="container-max section-padding relative z-50">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <motion.div
@@ -57,7 +53,7 @@ const Header = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item, index) => (
               <motion.button
                 key={item.name}
