@@ -29,9 +29,9 @@ const Header = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href)
     if (element) {
-      element.scrollIntoView({ 
+      element.scrollIntoView({
         behavior: 'smooth',
-        block: 'start'
+        block: 'start',
       })
     }
     setIsMenuOpen(false)
@@ -41,11 +41,12 @@ const Header = () => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
         isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}
     >
-      <div className="container-max px-4 sm:px-6 lg:px-8">
+      {/* ✅ Ensure no horizontal scroll with max-w-screen and overflow-hidden */}
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <motion.div
@@ -90,7 +91,9 @@ const Header = () => {
             y: isMenuOpen ? 0 : -20,
           }}
           transition={{ duration: 0.2 }}
-          className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} absolute top-16 left-0 right-0 bg-white shadow-lg`}
+          className={`md:hidden absolute top-16 left-0 right-0 bg-white shadow-lg ${
+            isMenuOpen ? 'block' : 'hidden'
+          }`}
         >
           <div className="py-2 space-y-1 px-4">
             {navItems.map((item) => (
