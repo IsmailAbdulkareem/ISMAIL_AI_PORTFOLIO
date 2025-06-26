@@ -5,6 +5,13 @@ import { Download, Mail } from 'lucide-react'
 import Image from 'next/image'
 import { TypeAnimation } from 'react-type-animation'
 
+// Utility to DRY motion props
+const fadeIn = (delay = 0) => ({
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { delay },
+})
+
 const Hero = () => {
   const scrollToContact = () => {
     const element = document.querySelector('#contact')
@@ -13,90 +20,78 @@ const Hero = () => {
     }
   }
 
+  // Determine if we should prioritize LCP image
+  const isLargeScreen = typeof window !== 'undefined' && window.innerWidth > 640
+
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
+    <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="container-max section-padding">
         <div className="grid md:grid-cols-2 gap-10 items-center">
           {/* Left Column: Text Content */}
           <div className="space-y-6 text-center md:text-left">
             {/* Greeting */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <span className="text-2xl sm:text-3xl">👋</span>
+            <motion.div {...fadeIn(0.2)}>
+              <span className="text-2xl sm:text-3xl" role="img" aria-label="Waving hand emoji">👋</span>
             </motion.div>
 
             {/* Main Heading */}
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
+              {...fadeIn(0.3)}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900"
             >
               Hello, I'm{' '}
               <TypeAnimation
                 sequence={[
-                  'Ismail',
-                  2000,
-                  'a Web Developer',
-                  2000,
-                  'a Python Developer',
-                  2000,
-                  'an AI Developer',
-                  2000,
+                  'Ismail', 3000,
+                  'a Web Developer', 2500,
+                  'a Python Developer', 2500,
+                  'an AI Developer', 2500,
                 ]}
                 wrapper="span"
-                speed={50}
+                speed={60}
                 className="heading-gradient"
                 repeat={Infinity}
               />
             </motion.h1>
 
             {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-xl sm:text-2xl text-gray-600 max-w-xl mx-auto md:mx-0"
-            >
-              I'm a Full-Stack Developer with 1.5 years of experience. I enjoy building sites & apps. My focus is Next.js (React).
+            <motion.p {...fadeIn(0.4)} className="text-xl sm:text-2xl text-gray-600 max-w-xl mx-auto md:mx-0">
+              I help small businesses go live with pixel-perfect, SEO-friendly Next.js sites. I'm a Full-Stack Developer with 1.5 years of experience.
             </motion.p>
 
             {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center"
-            >
+            <motion.div {...fadeIn(0.5)} className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center">
               <motion.button
+                aria-label="Scroll to contact section"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={scrollToContact}
-                className="btn-primary flex items-center gap-2"
+                className="btn-primary flex items-center gap-2 focus:outline focus:outline-2 focus:outline-primary"
               >
                 <Mail size={20} />
                 Contact me here
               </motion.button>
-              
-              <motion.button
+
+              <motion.a
+                href="/resume.pdf"
+                download
+                aria-label="Download my CV"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-secondary flex items-center gap-2"
+                className="btn-secondary flex items-center gap-2 focus:outline focus:outline-2 focus:outline-secondary"
               >
                 <Download size={20} />
                 Download CV
-              </motion.button>
+              </motion.a>
             </motion.div>
           </div>
 
           {/* Right Column: Image */}
           <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            {...fadeIn(0.6)}
+            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.6 }}
             className="order-first md:order-last"
           >
             <motion.div
@@ -105,23 +100,19 @@ const Hero = () => {
             >
               <Image
                 src="/images/profile.jpg"
-                alt="Ismail"
+                alt="Portrait of Ismail Kareem, full-stack developer"
                 width={500}
                 height={500}
                 className="w-full h-full object-cover"
-                priority
+                priority={isLargeScreen}
+                loading={isLargeScreen ? undefined : 'lazy'}
               />
             </motion.div>
           </motion.div>
         </div>
-        
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
+
+        {/* Scroll Indicator (Decorative) */}
+        <motion.div aria-hidden="true" {...fadeIn(1)} className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -139,4 +130,4 @@ const Hero = () => {
   )
 }
 
-export default Hero 
+export default Hero
