@@ -1,16 +1,16 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, Variants } from 'framer-motion'
 import { useRef } from 'react'
 
 // Animation variants
-const fadeInUp = (delay = 0) => ({
+const fadeInUp = (delay: number = 0): Variants => ({
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { delay, duration: 0.6, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { delay, duration: 0.6 } },
 })
 
 const About = () => {
-  const ref = useRef(null)
+  const ref = useRef<HTMLElement | null>(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
@@ -20,6 +20,7 @@ const About = () => {
           ref={ref}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
+          variants={fadeInUp(0)}
           className="space-y-12"
         >
           {/* Section Title */}
