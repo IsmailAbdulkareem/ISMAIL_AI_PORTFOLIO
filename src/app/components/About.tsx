@@ -1,116 +1,110 @@
 'use client'
 
-import { motion, useInView, Variants } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 
-// Animation variants
-const fadeInUp = (delay: number = 0): Variants => ({
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { delay, duration: 0.6 } },
-})
-
 const About = () => {
-  const ref = useRef<HTMLElement | null>(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
 
   return (
     <section id="about" className="section-padding bg-white">
       <div className="container-max max-w-4xl mx-auto">
         <motion.div
           ref={ref}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          variants={fadeInUp(0)}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
           className="space-y-12"
         >
           {/* Section Title */}
           <motion.h2
-            variants={fadeInUp(0.1)}
-            className="text-4xl sm:text-5xl font-extrabold text-center text-gray-900"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="text-4xl sm:text-5xl font-bold text-center text-gray-900"
           >
             About Me
           </motion.h2>
 
-          {/* Introduction */}
-          <motion.p
-            variants={fadeInUp(0.3)}
-            className="text-lg sm:text-xl text-gray-700 leading-relaxed text-center"
-          >
-            I&apos;m Ismail, a passionate full-stack developer who thrives on building impactful web
-            solutions. My journey began in Accounting, but I quickly discovered my love for coding at
-            SMIT. Since then, I&apos;ve honed my skills by delivering real-world projects for clients,
-            tackling challenges head-on and continuously expanding my tech toolkit.
-          </motion.p>
-
-          {/* Details Grid */}
+          {/* Content */}
           <motion.div
-            variants={fadeInUp(0.5)}
-            className="grid gap-8 md:grid-cols-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="text-gray-700 space-y-10"
           >
-            {/* Background & Skills */}
-            <div className="space-y-6">
-              <h3 className="text-2xl font-semibold text-gray-900">Background</h3>
-              <p className="text-gray-700 leading-relaxed">
-                With an Accounting degree under my belt, I pivoted to full-stack development at SMIT.
-                I love solving complex problems and transforming ideas into sleek, performant web
-                applications.
+            <div>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Background</h3>
+              <p className="text-lg leading-relaxed">
+                I hold a degree in Accounting, but my true passion led me to software development. I trained at
+                <strong> Saylani Mass IT Training (SMIT)</strong>, where I developed my skills in full-stack
+                web development. What excites me most about programming is problem-solving—finding solutions
+                and turning challenges into opportunities.
               </p>
-
-              <h3 className="text-2xl font-semibold text-gray-900">Technical Skills</h3>
-              <ul className="list-inside list-disc space-y-2 text-gray-700">
-                {[
-                  'React, Next.js',
-                  'Node.js, Express',
-                  'MongoDB, Prisma',
-                  'TypeScript, JavaScript',
-                  'Tailwind CSS, CSS Modules',
-                ].map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
             </div>
 
-            {/* Goals & Interests */}
-            <div className="space-y-6">
-              <h3 className="text-2xl font-semibold text-gray-900">Career Goals</h3>
-              <p className="text-gray-700 leading-relaxed">
-                I&apos;m seeking a dynamic role where I can craft user-centric solutions, collaborate
-                with passionate teams, and stay at the forefront of web technologies—especially in AI and
-                cloud-based architectures.
+            <div>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Technical Skills</h3>
+              <p className="text-lg leading-relaxed">
+                My core stack includes{' '}
+                <span className="font-semibold text-primary-600">React</span>,{' '}
+                <span className="font-semibold text-primary-600">Next.js</span>,{' '}
+                <span className="font-semibold text-primary-600">Node.js</span>, and{' '}
+                <span className="font-semibold text-primary-600">MongoDB</span>. I'm also skilled in{' '}
+                <span className="font-semibold text-primary-600">TypeScript</span> and{' '}
+                <span className="font-semibold text-primary-600">Prisma</span>.
+                <br />
+                I'm currently expanding my expertise in{' '}
+                <span className="font-semibold text-primary-600">Data Analytics, Cloud, and AI (DACA)</span> through the{' '}
+                <a
+                  href="https://www.linkedin.com/company/governor-sindh-initiative/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-primary-600 hover:underline"
+                >
+                  Governor’s Initiative for GenAI
+                </a>.
               </p>
+            </div>
 
-              <h3 className="text-2xl font-semibold text-gray-900">Personal Interests</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Outside of coding, I enjoy gaming, filmmaking, and working as a rider. I&apos;m a lifelong
-                learner—currently exploring Data Analytics, Cloud computing, and AI agents through the
-                Governor’s GenAI Initiative.
+            <div>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Career Goals</h3>
+              <p className="text-lg leading-relaxed">
+                I am seeking a full-time role as a software developer where I can contribute to impactful projects,
+                collaborate with innovative teams, and continue growing professionally in a fast-paced environment.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Personal Interests</h3>
+              <p className="text-lg leading-relaxed">
+                Outside of tech, I enjoy video games, movies, and part-time work as a rider. I love learning
+                new skills and exploring different fields of technology and creativity.
               </p>
             </div>
           </motion.div>
 
-          {/* Quick Tech Stack */}
+          {/* Tech Stack */}
           <motion.div
-            variants={fadeInUp(0.7)}
-            className="mt-8 p-6 bg-primary-50 rounded-xl shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.6 }}
+            className="mt-8 p-6 bg-gray-50 rounded-xl shadow-sm"
           >
-            <h3 className="text-2xl font-semibold text-primary-800 mb-4">Quick Tech Stack</h3>
+            <h4 className="text-xl font-semibold text-gray-800 mb-4">Quick Tech Stack</h4>
             <div className="flex flex-wrap gap-3">
-              {[
-                'React',
-                'Next.js',
-                'Node.js',
-                'Express',
-                'MongoDB',
-                'Prisma',
-                'TypeScript',
-                'Tailwind CSS',
-              ].map((skill) => (
-                <span
-                  key={skill}
-                  className="px-4 py-2 bg-primary-100 text-primary-800 rounded-full text-sm font-medium"
+              {['React', 'Next.js', 'Node.js', 'MongoDB', 'TypeScript', 'Prisma'].map((tech, i) => (
+                <motion.span
+                  key={tech}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ delay: 0.7 + i * 0.1 }}
+                  className="px-4 py-1.5 bg-primary-100 text-primary-700 rounded-full text-sm font-medium shadow-sm"
                 >
-                  {skill}
-                </span>
+                  {tech}
+                </motion.span>
               ))}
             </div>
           </motion.div>
