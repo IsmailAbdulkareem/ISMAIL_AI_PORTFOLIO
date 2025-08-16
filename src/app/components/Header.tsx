@@ -29,10 +29,7 @@ const Header = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href)
     if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      })
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
     setIsMenuOpen(false)
   }
@@ -41,11 +38,11 @@ const Header = () => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
         isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}
     >
-      <div className="container-max px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <motion.div
@@ -56,7 +53,7 @@ const Header = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item, index) => (
               <motion.button
                 key={item.name}
@@ -83,30 +80,29 @@ const Header = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{
-            opacity: isMenuOpen ? 1 : 0,
-            y: isMenuOpen ? 0 : -20,
-          }}
-          transition={{ duration: 0.2 }}
-          className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} absolute top-16 left-0 right-0 bg-white shadow-lg`}
-        >
-          <div className="py-2 space-y-1 px-4">
-            {navItems.map((item) => (
-              <button
-                key={item.name}
-                onClick={(e) => {
-                  e.preventDefault()
-                  scrollToSection(item.href)
-                }}
-                className="block w-full text-left text-gray-700 hover:text-primary-600 transition-colors duration-200 font-medium py-3 px-4 rounded hover:bg-gray-50"
-              >
-                {item.name}
-              </button>
-            ))}
-          </div>
-        </motion.div>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden absolute top-16 left-0 right-0 bg-white shadow-md"
+          >
+            <div className="py-2 space-y-1 px-4">
+              {navItems.map((item) => (
+                <button
+                  key={item.name}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    scrollToSection(item.href)
+                  }}
+                  className="block w-full text-left text-gray-700 hover:text-primary-600 transition-colors duration-200 font-medium py-2 px-4 rounded hover:bg-gray-50"
+                >
+                  {item.name}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
       </div>
     </motion.header>
   )
