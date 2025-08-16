@@ -13,6 +13,10 @@ const Hero = () => {
     }
   }
 
+  const downloadCV = () => {
+    window.open('/api/download-resume', '_blank')
+  }
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="container-max section-padding">
@@ -84,6 +88,7 @@ const Hero = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={downloadCV}
                 className="btn-secondary flex items-center gap-2"
               >
                 <Download size={20} />

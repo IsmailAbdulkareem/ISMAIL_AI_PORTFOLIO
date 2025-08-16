@@ -9,6 +9,10 @@ const Experience = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
 
+  const downloadResume = () => {
+    window.open('/api/download-resume', '_blank')
+  }
+
   const experiences = [
     {
       title: 'Graduated bootcamp',
@@ -145,6 +149,7 @@ const Experience = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={downloadResume}
               className="btn-primary"
             >
               Download Full Resume
