@@ -4,17 +4,16 @@ This guide will help you set up an advanced AI agent chatbot for your portfolio 
 
 ## 🚀 Quick Setup
 
-### 1. Get Gemini API Key
-1. Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Sign in with your Google account
-3. Click "Create API Key"
-4. Copy the generated key (starts with `AIzaSy...`)
+### 1. Get OpenAI API Key
+1. Visit [OpenAI Platform](https://platform.openai.com/)
+2. Create an account if you don't have one
+3. Navigate to API keys section and create a new API key
 
 ### 2. Create Environment File
 Create a file named `.env.local` in your project root:
 
 ```env
-GEMINI_API_KEY=your_actual_gemini_api_key_here
++ OPENAI_API_KEY=your_openai_key_here
 EMAIL_USER=your_email@gmail.com
 EMAIL_PASS=your_app_password_here
 NEXTAUTH_URL=https://your-domain.com
@@ -174,7 +173,7 @@ The agent chatbot is fully responsive and includes:
 ### Environment Variables
 Make sure to set in your deployment platform:
 ```env
-GEMINI_API_KEY=your_actual_gemini_api_key_here
++ OPENAI_API_KEY=your-api-key-here
 ```
 
 ### Vercel Deployment

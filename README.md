@@ -16,7 +16,7 @@ A modern, responsive portfolio website built with Next.js 14, featuring an AI-po
 - **Professional UI** - Clean, modern design inspired by top portfolios
 
 ### 🤖 **AI-Powered Chatbot**
-- **Intelligent Assistant** - Powered by Google Gemini AI
+- **Intelligent Assistant** - Powered by OpenAI
 - **Lead Generation** - Automatically detects service interest and collects leads
 - **Step-by-Step Collection** - Gathers name, email, phone, project details, budget, timeline
 - **Professional Email Notifications** - Beautiful HTML emails sent to you
@@ -47,7 +47,7 @@ A modern, responsive portfolio website built with Next.js 14, featuring an AI-po
 
 ### **Backend & APIs**
 - **Next.js API Routes** - Server-side API endpoints
-- **Google Gemini AI** - AI chatbot functionality
+- **OpenAI API** - AI chatbot functionality
 - **Nodemailer** - Email sending capabilities
 - **Gmail SMTP** - Email service integration
 
@@ -84,8 +84,8 @@ A modern, responsive portfolio website built with Next.js 14, featuring an AI-po
    
    Edit `.env.local` with your credentials:
    ```env
-   # Gemini API Configuration
-   GEMINI_API_KEY=your_gemini_api_key_here
+   # OpenAI API Configuration
+   OPENAI_API_KEY=your_openai_api_key_here
    
    # Email Configuration
    EMAIL_USER=your_gmail@gmail.com
@@ -235,7 +235,7 @@ The portfolio is fully responsive and optimized for:
 
 ### ✅ **Completed Features**
 - [x] Modern responsive design
-- [x] AI-powered chatbot with Gemini
+- [x] AI-powered chatbot with OpenAI
 - [x] Intelligent lead generation
 - [x] Professional email notifications
 - [x] Contact form with validation
@@ -278,11 +278,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Asharib** - Design inspiration from [asharib.xyz](https://asharib.xyz/)
 - **Next.js Team** - Amazing React framework
 - **Tailwind CSS** - Utility-first CSS framework
-- **Google Gemini** - AI capabilities
+- **OpenAI** - AI capabilities
 - **Framer Motion** - Smooth animations
 
 ---
 
 ⭐ **Star this repository if you found it helpful!**
 
-Made with ❤️ by Ismail 
+Made with ❤️ by Ismail
