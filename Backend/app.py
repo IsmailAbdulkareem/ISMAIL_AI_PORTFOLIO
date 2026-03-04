@@ -103,15 +103,16 @@ KNOWLEDGE_BASE = {
 
 # Guardrails - Allowed topics
 ALLOWED_KEYWORDS = [
-    "ismail", "project", "skill", "technology", "experience",
-    "contact", "email", "phone", "hire", "available", "service",
-    "portfolio", "website", "app", "build", "react", "next",
-    "developer", "work", "job", "company", "background"
+    "ismail", "project", "projects", "skill", "skills", "technology", "technologies", "experience",
+    "contact", "email", "phone", "hire", "available", "service", "services",
+    "portfolio", "website", "websites", "app", "build", "built", "react", "next",
+    "developer", "work", "job", "company", "background", "about", "tell me"
 ]
 
 BLOCKED_KEYWORDS = [
-    "weather", "news", "politics", "code for", "write code",
-    "debug", "math", "science", "recipe", "health", "legal"
+    "weather forecast", "news today", "political opinion", "code for me", "write code for",
+    "debug this", "math problem", "science question", "recipe for", "health advice", "legal advice",
+    "game recommendation", "movie suggestion"
 ]
 
 
