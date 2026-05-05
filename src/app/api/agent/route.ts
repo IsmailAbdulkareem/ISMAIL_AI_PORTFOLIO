@@ -1,67 +1,116 @@
-import { NextRequest, NextResponse } from 'next/server';
-import OpenAI from 'openai';
+/**
+ * Agent API Route - Proxies requests to Python Backend
+ * 
+ * Development: Uses local backend at http://localhost:8000
+ * Production: Uses Hugging Face Space backend
+ */
 
-// Initialize OpenAI
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+import { NextRequest, NextResponse } from 'next/server';
+
+// Backend URL configuration
+const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:8000';
 
 export async function POST(request: NextRequest) {
   try {
+    // Parse incoming request
     const { message, history = [] } = await request.json();
 
-    if (!message) {
-      return NextResponse.json({ error: 'Message is required' }, { status: 400 });
+    // Validate message
+    if (!message || typeof message !== 'string') {
+      return NextResponse.json(
+        { error: 'Message is required and must be a string' },
+        { status: 400 }
+      );
     }
 
-    // Stop collection if user says "no" style responses
-    const stopTriggers = ['no', 'not now', 'cancel', 'stop', 'leave it', 'change my mind'];
-    const userSaidNo = stopTriggers.some(word =>
-      message.toLowerCase().includes(word)
-    );
-
-    if (userSaidNo) {
-      return NextResponse.json({
-        message: "No problem! If you change your mind, I'm here anytime 😊",
-      });
-    }
-
-    // Add system prompt and chat history
-    const messages = [
-      {
-        role: 'system',
-        content: `
-You are Ismail AI Assistant, built into Ismail's portfolio website.
-
-Your job is to:
-- Answer questions about Ismail's web development skills (React, Next.js, Node.js, MongoDB, etc.)
-- Guide users through website design topics
-- Help users understand benefits of hiring Ismail
-- Encourage interested users to start a lead collection (but don’t collect personal details directly – let the frontend handle that)
-
-Always keep your tone professional, polite, concise.
-        `
+    // Forward request to Python backend
+    const backendResponse = await fetch(`${BACKEND_URL}/api/chat`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
-      ...history,
-      { role: 'user', content: message }
-    ];
-
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini', // Change to 'gpt-4o' for higher quality
-      messages,
-      temperature: 0.7,
-      max_tokens: 300,
+      body: JSON.stringify({
+        message,
+        history: history || [],
+      }),
+      // Add timeout
+      signal: AbortSignal.timeout(30000), // 30 second timeout
     });
 
-    const assistantReply = completion.choices[0].message?.content || "Sorry, I couldn't generate a helpful response.";
+    // Handle backend errors
+    if (!backendResponse.ok) {
+      const errorData = await backendResponse.json().catch(() => ({}));
+      
+      if (backendResponse.status === 429) {
+        return NextResponse.json(
+          { error: 'Too many requests. Please try again later.' },
+          { status: 429 }
+        );
+      }
+
+      if (backendResponse.status === 500) {
+        return NextResponse.json(
+          { error: 'Backend service unavailable. Please try again later.' },
+          { status: 503 }
+        );
+      }
+
+      return NextResponse.json(
+        { error: errorData.detail || 'Failed to get response from backend' },
+        { status: backendResponse.status }
+      );
+    }
+
+    // Parse and return backend response
+    const data = await backendResponse.json();
 
     return NextResponse.json({
-      message: assistantReply,
-      timestamp: new Date().toISOString()
+      message: data.message,
+      timestamp: data.timestamp || new Date().toISOString(),
+      source: 'python-backend', // For debugging
     });
 
-  } catch (err: any) {
-    console.error('[Agent API Error]', err);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  } catch (error: any) {
+    console.error('[Agent API Error]', {
+      message: error?.message,
+      name: error?.name,
+      cause: error?.cause,
+    });
+
+    // Handle different error types
+    if (error?.name === 'TimeoutError' || error?.name === 'AbortError') {
+      return NextResponse.json(
+        { 
+          error: 'Request timeout. Please try again.',
+          fallback: "I'm having trouble connecting right now. Please try again in a moment, or feel free to email me directly at ismail233290@gmail.com!"
+        },
+        { status: 408 }
+      );
+    }
+
+    if (error?.code === 'ECONNREFUSED') {
+      return NextResponse.json(
+        { 
+          error: 'Backend service not available. Make sure the Python backend is running.',
+          backendUrl: BACKEND_URL,
+        },
+        { status: 503 }
+      );
+    }
+
+    // Generic error
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
   }
+}
+
+// Optional: Add GET endpoint for health check
+export async function GET() {
+  return NextResponse.json({
+    status: 'healthy',
+    backend: BACKEND_URL,
+    service: 'nextjs-agent-proxy',
+  });
 }

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import AgentChatbot from './components/AgentChatbot'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -50,7 +49,6 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
         {children}
-        <AgentChatbot />
       </body>
     </html>
   )

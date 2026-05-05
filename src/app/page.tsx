@@ -1,23 +1,27 @@
-import Header from '@/app/components/Header'
-import Hero from '@/app/components/Hero'
-import About from '@/app/components/About'
-import Projects from '@/app/components/Projects'
-import Skills from '@/app/components/Skills'
-import Experience from '@/app/components/Experience'
-import Contact from '@/app/components/Contact'
-import Footer from '@/app/components/Footer'
+import {
+  Header3D,
+  Hero3D,
+  About3D,
+  Projects3D,
+  Skills3D,
+  Experience3D,
+  Contact3D,
+  Footer3D
+} from '@/app/components/3d'
+import PortfolioChatbot from '@/app/components/PortfolioChatbot'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Header />
-      <Hero />
-      <About />
-      <Projects />
-      <Skills />
-      <Experience />
-      <Contact />
-      <Footer />
+    <main className="min-h-screen bg-gray-900">
+      <Header3D />
+      <Hero3D />
+      <About3D />
+      <Projects3D />
+      <Skills3D />
+      <Experience3D />
+      <Contact3D />
+      <Footer3D />
+      <PortfolioChatbot />
     </main>
   )
 } 
