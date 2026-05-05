@@ -93,8 +93,10 @@ export async function POST(request: NextRequest) {
       const toolResults: any[] = [];
 
       for (const toolCall of toolCalls) {
-        const toolName = toolCall.function.name;
-        const toolArgs = JSON.parse(toolCall.function.arguments);
+        // OpenAI SDK v5 structure
+        const functionCall = toolCall as any;
+        const toolName = functionCall.name || functionCall.function?.name;
+        const toolArgs = functionCall.arguments ? JSON.parse(functionCall.arguments) : functionCall.function?.arguments ? JSON.parse(functionCall.function.arguments) : {};
 
         const result = executeAgentTool(toolName, toolArgs);
 
@@ -122,7 +124,7 @@ export async function POST(request: NextRequest) {
 
       return NextResponse.json({
         message: finalMessage,
-        tool_used: toolCalls[0].function.name,
+        tool_used: (toolCalls[0] as any).name || (toolCalls[0] as any).function?.name,
         timestamp: new Date().toISOString()
       });
     }

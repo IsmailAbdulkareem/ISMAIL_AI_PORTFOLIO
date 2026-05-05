@@ -39,12 +39,12 @@ function FloatingShape({ position, color, speed = 1 }: FloatingShapeProps) {
 }
 
 export default function FloatingShapes() {
-  const shapes = [
+  const shapes: Array<{ position: [number, number, number]; color: string; speed: number }> = [
     { position: [-3, 2, -2], color: '#3b82f6', speed: 0.8 },
     { position: [3, -1, -3], color: '#8b5cf6', speed: 1.2 },
     { position: [-2, -2, -1], color: '#06b6d4', speed: 1.0 },
     { position: [2, 1, -2], color: '#ec4899', speed: 0.9 },
-  ] as const
+  ]
 
   return (
     <>
