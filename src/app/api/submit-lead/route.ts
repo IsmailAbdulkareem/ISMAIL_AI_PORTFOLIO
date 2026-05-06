@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Check environment variables
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
       console.error('Missing email credentials in environment variables');
       return NextResponse.json(
         { error: 'Email service not configured' },
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
       service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        pass: process.env.EMAIL_PASSWORD,
       },
     });
 

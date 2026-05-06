@@ -89,7 +89,7 @@ A modern, responsive portfolio website built with Next.js 14, featuring an AI-po
    
    # Email Configuration
    EMAIL_USER=your_gmail@gmail.com
-   EMAIL_PASS=your_app_password_here
+   EMAIL_PASSWORD=your_app_password_here
    CONTACT_TO=your_gmail@gmail.com
    
    # NextAuth URL (for production)
