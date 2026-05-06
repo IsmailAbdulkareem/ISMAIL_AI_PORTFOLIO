@@ -8,12 +8,12 @@ export const portfolioKnowledge = {
     whatsapp: "+92-300-1234567",
     linkedin: "https://linkedin.com/in/ismailabdulkareem",
     github: "https://github.com/IsmailAbdulkareem",
-    website: "https://ismailabdulkareem.dev",
+    website: "https://buildwithismail.xyz",
     resume: "/resume.pdf"
   },
 
   about: {
-    summary: "Full-Stack AI Developer with 1.5+ years of experience building modern, high-performance web applications using Next.js, React, Node.js, TypeScript, and MongoDB. I create scalable, SEO-friendly, and user-focused solutions.",
+    summary: "Full-Stack AI Developer with 2.5+ years of experience building modern, high-performance web applications using Next.js, React, Node.js, TypeScript, and MongoDB. I create scalable, SEO-friendly, and user-focused solutions.",
     technologies_mastered: 15,
     projects_completed: 12,
     clients_served: 8,
@@ -43,7 +43,6 @@ export const portfolioKnowledge = {
     database: [
       "MongoDB",
       "PostgreSQL",
-      "Redis",
       "Database Design",
       "Data Modeling"
     ],
@@ -67,8 +66,7 @@ export const portfolioKnowledge = {
       "VS Code",
       "Postman",
       "Figma",
-      "Adobe Creative Suite",
-      "Jira/Trello"
+      "Adobe Creative Suite"
     ]
   },
 
@@ -77,8 +75,8 @@ export const portfolioKnowledge = {
       title: "AI-Powered Portfolio Website",
       description: "Interactive 3D portfolio with AI chatbot assistant, built with Next.js, Three.js, and OpenAI integration",
       technologies: ["Next.js", "Three.js", "TypeScript", "OpenAI API", "Tailwind CSS"],
-      link: "https://ismailabdulkareem.dev",
-      github: "https://github.com/IsmailAbdulkareem/portfolio",
+      link: "https://buildwithismail.xyz",
+      github: "https://github.com/IsmailAbdulkareem/ISMAIL_AI_PORTFOLIO",
       featured: true
     },
     {

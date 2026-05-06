@@ -57,4 +57,58 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #2563eb;
+}
+
+/* Safe area support for devices with notches */
+@supports (padding: max(0px)) {
+  .safe-area-inset {
+    padding-top: max(env(safe-area-inset-top), 0px);
+    padding-bottom: max(env(safe-area-inset-bottom), 0px);
+  }
+}
+
+/* Prevent body scroll when mobile chatbot is open */
+body.chatbot-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  body.chatbot-open {
+    overflow: auto;
+    position: static;
+  }
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* GPU acceleration for smooth animations */
+.gpu-accelerate {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimize gradients for better performance */
+.gradient-optimized {
+  background-attachment: fixed;
+  background-size: 200% 200%;
+}
+
+/* Reduce motion on mobile for better performance */
+@media (max-width: 640px) {
+  * {
+    animation-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
+  }
 } 
