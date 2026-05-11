@@ -53,7 +53,7 @@ const About3D = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900/95 via-gray-900/90 to-gray-900/95 z-10" />
 
       {/* Content */}
-      <div className="container-max relative z-20 px-4 sm:px-6 lg:px-8">
+      <div className="container-max relative z-20 px-4 sm:px-6 lg:px-8 min-w-0">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -77,13 +77,13 @@ const About3D = () => {
           </motion.div>
 
           {/* Main Content */}
-          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto min-w-0">
             {/* Left Column - Story */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.4 }}
-              className="space-y-6"
+              className="space-y-6 min-w-0 w-full"
             >
               <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-8 border border-gray-700">
                 <h3 className="text-2xl font-semibold text-white mb-4 flex items-center gap-2">
@@ -145,7 +145,7 @@ const About3D = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.4 }}
-              className="space-y-6"
+              className="space-y-6 min-w-0 w-full"
             >
               {highlights.map((highlight, index) => (
                 <motion.div

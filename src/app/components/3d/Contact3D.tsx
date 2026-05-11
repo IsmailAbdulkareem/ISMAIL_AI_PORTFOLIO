@@ -117,14 +117,14 @@ const Contact3D = () => {
             </p>
           </motion.div>
 
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 min-w-0">
               {/* Left Column - Contact Info */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                 transition={{ delay: 0.4 }}
-                className="space-y-8"
+                className="space-y-8 min-w-0"
               >
                 <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-8 border border-gray-700">
                   <h3 className="text-2xl font-semibold text-white mb-6">Get in Touch</h3>
@@ -224,6 +224,7 @@ const Contact3D = () => {
                 initial={{ opacity: 0, x: 50 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
                 transition={{ delay: 0.4 }}
+                className="min-w-0"
               >
                 <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-8 border border-gray-700">
                   <h3 className="text-2xl font-semibold text-white mb-6">Send a Message</h3>
