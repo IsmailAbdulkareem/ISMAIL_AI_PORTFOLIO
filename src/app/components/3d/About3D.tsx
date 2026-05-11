@@ -77,7 +77,7 @@ const About3D = () => {
           </motion.div>
 
           {/* Main Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto min-w-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto min-w-0 justify-items-center lg:justify-items-stretch">
             {/* Left Column - Story */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}

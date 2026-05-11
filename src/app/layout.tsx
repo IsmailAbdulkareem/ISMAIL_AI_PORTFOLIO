@@ -35,6 +35,16 @@ export const metadata: Metadata = {
     description: 'Build AI-powered websites and chatbots that automate your business. WhatsApp chatbots, intelligent automation, and AI-driven solutions from Karachi, Pakistan.',
     type: 'website',
     locale: 'en_US',
+    url: 'https://buildwithismail.xyz', // Replace with your actual domain
+    siteName: 'Ismail AI Portfolio',
+    images: [
+      {
+        url: '/images/profile.jpg', // Add this image to your public/images folder
+        width: 1200,
+        height: 630,
+        alt: 'Ismail - AI Chatbot Developer',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
