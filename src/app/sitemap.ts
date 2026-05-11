@@ -1,7 +1,37 @@
 import { MetadataRoute } from 'next'
+import { getAllPosts, getAllProjects } from '@/sanity/client'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://buildwithismail.xyz'
+
+  // Fetch all blog posts and projects from Sanity
+  const [posts, projects] = await Promise.all([
+    getAllPosts(),
+    getAllProjects(),
+  ])
+
+  // Helper to get valid date
+  const getValidDate = (dateString?: string): Date => {
+    if (!dateString) return new Date()
+    const date = new Date(dateString)
+    return isNaN(date.getTime()) ? new Date() : date
+  }
+
+  // Generate blog post URLs
+  const blogUrls = posts.map((post: any) => ({
+    url: `${baseUrl}/blog/${post.slug.current}`,
+    lastModified: getValidDate(post.publishedAt || post._createdAt),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
+  // Generate project URLs
+  const projectUrls = projects.map((project: any) => ({
+    url: `${baseUrl}/projects/${project.slug.current}`,
+    lastModified: getValidDate(project._updatedAt || project._createdAt),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
 
   return [
     {
@@ -11,40 +41,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${baseUrl}/#about`,
+      url: `${baseUrl}/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/#projects`,
+      url: `${baseUrl}/projects`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      changeFrequency: 'weekly',
+      priority: 0.9,
     },
     {
-      url: `${baseUrl}/#skills`,
+      url: `${baseUrl}/contact`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/#experience`,
+      url: `${baseUrl}/services`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/#testimonials`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/#contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/services/ai-chatbot-development`,
@@ -70,23 +88,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
-    {
-      url: `${baseUrl}/blog/how-ai-chatbots-save-businesses-time-money-pakistan`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/blog/whatsapp-chatbot-guide-pakistan-businesses`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/blog/ai-powered-websites-vs-traditional-websites-2026`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
+    ...blogUrls,
+    ...projectUrls,
   ]
 }
