@@ -3,118 +3,65 @@
 > next dev
 
  ⚠ Port 3000 is in use, trying 3001 instead.
- ⚠ Port 3001 is in use, trying 3002 instead.
   ▲ Next.js 14.2.30
-  - Local:        http://localhost:3002
+  - Local:        http://localhost:3001
   - Environments: .env.local
 
  ✓ Starting...
- ✓ Ready in 4.1s
+ ✓ Ready in 6s
  ○ Compiling / ...
- ✓ Compiled / in 26.6s (2536 modules)
- GET / 200 in 28446ms
- ✓ Compiled in 2.4s (1269 modules)
- GET / 200 in 115ms
- GET / 200 in 100ms
- GET / 200 in 1030ms
- ✓ Compiled in 1914ms (1269 modules)
- ✓ Compiled in 1147ms (1269 modules)
- ✓ Compiled in 2.3s (1269 modules)
- ✓ Compiled in 7.9s (2565 modules)
- ⚠ Fast Refresh had to perform a full reload due to a runtime error.
- GET / 200 in 786ms
-<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\Desktop\ISMAIL_AI_PORTFOLIO\.next\cache\webpack\server-development\2.pack.gz_' -> 'D:\Desktop\ISMAIL_AI_PORTFOLIO\.next\cache\webpack\server-development\2.pack.gz'
-<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\Desktop\ISMAIL_AI_PORTFOLIO\.next\cache\webpack\client-development\1.pack.gz_' -> 'D:\Desktop\ISMAIL_AI_PORTFOLIO\.next\cache\webpack\client-development\1.pack.gz'
- ○ Compiling /_not-found ...
- ✓ Compiled /_not-found in 44s (2568 modules)
- ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
- GET /_next/static/webpack/64c35027ed771a23.webpack.hot-update.json 404 in 25409ms
- GET / 200 in 6714ms
- GET / 200 in 7004ms
- ✓ Compiled in 1453ms (1283 modules)
- ✓ Compiled in 1125ms (1283 modules)
- GET / 200 in 1425ms
- ✓ Compiled in 11.9s (1283 modules)
- ✓ Compiled in 2.2s (1283 modules)
- ✓ Compiled in 3.4s (2565 modules)
- ✓ Compiled in 4.4s (2565 modules)
- ✓ Compiled in 909ms (2565 modules)
- ✓ Compiled in 5.9s (2578 modules)
- ⚠ Fast Refresh had to perform a full reload due to a runtime error.
- GET / 200 in 838ms
+ ✓ Compiled / in 30.8s (2950 modules)
+ GET / 200 in 31959ms
+ ✓ Compiled in 2.3s (1470 modules)
+ GET / 200 in 168ms
+ ○ Compiling /about ...
+ ✓ Compiled /about in 15.8s (2947 modules)
+ GET /about 200 in 3182ms
+ ○ Compiling /services ...
+ ✓ Compiled /services in 12.4s (2964 modules)
+ ○ Compiling /projects ...
+ ✓ Compiled /projects in 1231ms (2977 modules)
+ ○ Compiling /blog ...
+ ✓ Compiled /blog in 9.3s (2982 modules)
+ ○ Compiling /contact ...
+ ✓ Compiled /contact in 8.7s (2998 modules)
+ GET / 200 in 1288ms
    Reload env: .env.local
-The user aborted a request.
-
-Retrying 1/3...
+   Reload env: .env.local
+   Reload env: .env.local
  ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
- ✓ Compiled in 53s (2587 modules)
+   Reload env: .env.local
+ ✓ Compiled in 26.1s (2986 modules)
+ GET / 200 in 10138ms
+ ✓ Compiled in 13.8s (3155 modules)
+ ✓ Compiled in 12.9s (3500 modules)
+ ✓ Compiled (3486 modules)
+ ✓ Compiled in 1599ms (1588 modules)
+ ○ Compiling /services/ai-chatbot-development ...
+ ✓ Compiled /services/ai-chatbot-development in 2.3s (3506 modules)
+ ✓ Compiled in 3.8s (3506 modules)
+   Reload env: .env.local
+ ✓ Compiled in 1094ms (3492 modules)
+   Reload env: .env.local
+ ✓ Compiled in 2.2s (3500 modules)
+   Reload env: .env.local
+ ✓ Compiled in 1105ms (3486 modules)
+   Reload env: .env.local
+ ✓ Compiled in 1372ms (3486 modules)
+   Reload env: .env.local
+ ✓ Compiled in 1002ms (3486 modules)
+   Reload env: .env.local
+ ✓ Compiled in 1001ms (3486 modules)
+ ✓ Compiled in 6s (3502 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /services/ai-chatbot-development 200 in 718ms
+ ✓ Compiled in 3.3s (3503 modules)
+   Reload env: .env.local
+ ✓ Compiled in 5.7s (3503 modules)
  ○ Compiling /_not-found ...
- ✓ Compiled /api/agent in 17s (2581 modules)
- ✓ Compiled (2611 modules)
-[Agent API Error] {
-  message: 'fetch failed',
-  name: 'TypeError',
-  cause: AggregateError [ECONNREFUSED]: 
-      at internalConnectMultiple (node:net:1134:18)
-      at afterConnectMultiple (node:net:1715:7)
-      at TCPConnectWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
-    code: 'ECONNREFUSED',
-    [errors]: [ [Error], [Error] ]
-  }
-}
- POST /api/agent 500 in 37876ms
- GET / 200 in 12760ms
- ✓ Compiled in 5.9s (2573 modules)
-<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\Desktop\ISMAIL_AI_PORTFOLIO\.next\cache\webpack\server-development\0.pack.gz_' -> 'D:\Desktop\ISMAIL_AI_PORTFOLIO\.next\cache\webpack\server-development\0.pack.gz'
-<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\Desktop\ISMAIL_AI_PORTFOLIO\.next\cache\webpack\client-development\0.pack.gz_' -> 'D:\Desktop\ISMAIL_AI_PORTFOLIO\.next\cache\webpack\client-development\0.pack.gz'
- ✓ Compiled in 16.3s (1287 modules)
- ✓ Compiled in 1768ms (1287 modules)
- ✓ Compiled in 5.7s (1287 modules)
- ✓ Compiled in 18.3s (2914 modules)
- ✓ Compiled in 4.8s (2914 modules)
- ✓ Compiled in 886ms (1453 modules)
- ✓ Compiled in 670ms (1453 modules)
- ✓ Compiled in 668ms (1453 modules)
- ✓ Compiled in 1305ms (1453 modules)
- ✓ Compiled in 1545ms (1453 modules)
- ✓ Compiled in 557ms (1453 modules)
- ✓ Compiled in 23s (1453 modules)
- ✓ Compiled in 9s (1453 modules)
- ✓ Compiled in 923ms (1453 modules)
- ✓ Compiled in 1084ms (1453 modules)
- ✓ Compiled in 1671ms (1453 modules)
- ✓ Compiled in 802ms (1453 modules)
- ✓ Compiled in 1742ms (1453 modules)
- ✓ Compiled in 871ms (1453 modules)
- ✓ Compiled in 749ms (1453 modules)
- ✓ Compiled in 648ms (1453 modules)
- ✓ Compiled in 1900ms (1453 modules)
- ✓ Compiled in 1006ms (1453 modules)
- ✓ Compiled in 8.5s (2914 modules)
- ✓ Compiled in 1792ms (2914 modules)
-<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\Desktop\ISMAIL_AI_PORTFOLIO\.next\cache\webpack\client-development\0.pack.gz_' -> 'D:\Desktop\ISMAIL_AI_PORTFOLIO\.next\cache\webpack\client-development\0.pack.gz'
- ✓ Compiled in 6.5s (2914 modules)
- ✓ Compiled in 7.3s (1453 modules)
- ✓ Compiled in 928ms (1453 modules)
- ✓ Compiled in 1125ms (1453 modules)
- ✓ Compiled in 999ms (1453 modules)
- ✓ Compiled in 1269ms (1453 modules)
- ✓ Compiled in 971ms (1453 modules)
- ✓ Compiled in 510ms (1453 modules)
- ✓ Compiled in 731ms (1453 modules)
- ✓ Compiled in 1361ms (1453 modules)
- ✓ Compiled in 629ms (1453 modules)
- ✓ Compiled in 635ms (1453 modules)
- ✓ Compiled in 676ms (1453 modules)
- ✓ Compiled in 8.5s (2914 modules)
- ✓ Compiled in 2.5s (1453 modules)
- ✓ Compiled in 6.8s (2914 modules)
- ✓ Compiled in 4.4s (1453 modules)
- ✓ Compiled in 6s (2914 modules)
- ✓ Compiled in 4.5s (2914 modules)
- ✓ Compiled in 3.8s (2914 modules)
- ✓ Compiled in 9.5s (2914 modules)
- ✓ Compiled in 5.1s (2914 modules)
- ✓ Compiled in 2.8s (2914 modules)
- ✓ Compiled in 6.5s (2914 modules)
-[?25h
+ ✓ Compiled /_not-found in 3.5s (3492 modules)
+ GET /_next/static/css/app/layout.css 404 in 4423ms
+ ○ Compiling /studio/[[...tool]] ...
+   Reload env: .env.local
+   Reload env: .env.local
+   Reload env: .env.local

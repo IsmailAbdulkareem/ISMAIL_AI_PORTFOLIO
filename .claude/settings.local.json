@@ -7,13 +7,16 @@
       "Bash(python *)",
       "Bash(npm install *)",
       "Bash(curl -s http://localhost:3000)",
-      "Bash(curl -s http://localhost:3002)",
       "Bash(npm run *)",
       "Bash(grep -E \"\\\\.tsx$\")",
       "Bash(npm list *)",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(curl -s http://localhost:3001)",
+      "Bash(curl -s http://localhost:3000/blog)",
+      "Bash(npm view *)",
+      "Bash(npm uninstall *)"
     ]
   }
 }

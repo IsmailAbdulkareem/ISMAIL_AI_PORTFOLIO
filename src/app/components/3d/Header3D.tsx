@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Sparkles } from 'lucide-react'
+import Link from 'next/link'
 
 const Header3D = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -33,13 +34,17 @@ const Header3D = () => {
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
+    { name: 'Services', href: '/services/ai-chatbot-development', external: true },
     { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Experience', href: '#experience' },
+    { name: 'Blog', href: '/blog', external: true },
     { name: 'Contact', href: '#contact' },
   ]
 
-  const scrollToSection = (href: string) => {
+  const scrollToSection = (href: string, external?: boolean) => {
+    if (external) {
+      window.location.href = href
+      return
+    }
     const element = document.querySelector(href)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -73,7 +78,7 @@ const Header3D = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
             {navItems.map((item, index) => {
-              const isActive = activeSection === item.href.substring(1)
+              const isActive = !item.external && activeSection === item.href.substring(1)
               return (
                 <motion.button
                   key={item.name}
@@ -81,7 +86,7 @@ const Header3D = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -2 }}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => scrollToSection(item.href, item.external)}
                   className={`relative px-4 py-2 rounded-lg transition-all duration-200 font-medium ${
                     isActive
                       ? 'text-white'
@@ -133,12 +138,12 @@ const Header3D = () => {
             >
               <div className="py-4 space-y-2">
                 {navItems.map((item) => {
-                  const isActive = activeSection === item.href.substring(1)
+                  const isActive = !item.external && activeSection === item.href.substring(1)
                   return (
                     <motion.button
                       key={item.name}
                       whileTap={{ scale: 0.95 }}
-                      onClick={() => scrollToSection(item.href)}
+                      onClick={() => scrollToSection(item.href, item.external)}
                       className={`block w-full text-left px-4 py-3 rounded-lg transition-all duration-200 font-medium ${
                         isActive
                           ? 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-white border border-blue-500/30'

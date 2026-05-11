@@ -116,7 +116,7 @@ const Skills3D = () => {
               { label: 'Years Experience', value: '1.5+' },
               { label: 'Projects Completed', value: '10+' },
               { label: 'Technologies', value: '15+' },
-              { label: 'Happy Clients', value: '5+' },
+              { label: 'Happy Clients', value: '8+' },
             ].map((stat, index) => (
               <div
                 key={stat.label}

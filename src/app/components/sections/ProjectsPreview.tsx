@@ -3,11 +3,8 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ExternalLink, Github } from 'lucide-react'
+import { ArrowRight, ExternalLink, Github } from 'lucide-react'
 import Link from 'next/link'
-import Scene from './Scene'
-import ProjectGallery3D from './ProjectGallery3D'
-import Lights from './Lights'
 
 type Project = {
   _id: string
@@ -20,60 +17,52 @@ type Project = {
   slug: { current: string }
 }
 
-type Projects3DProps = {
+type ProjectsPreviewProps = {
   projects: Project[]
 }
 
-const Projects3D = ({ projects }: Projects3DProps) => {
+const ProjectsPreview = ({ projects }: ProjectsPreviewProps) => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
 
   return (
     <section id="projects" className="relative min-h-screen py-20 overflow-hidden">
-      {/* 3D Background */}
-      <div className="absolute inset-0 z-0">
-        <Scene>
-          <Lights />
-          <ProjectGallery3D />
-        </Scene>
-      </div>
-
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/95 via-gray-900/90 to-gray-900/95 z-10" />
+      {/* Background */}
+      <div className="absolute inset-0 bg-gray-900" />
 
       {/* Content */}
-      <div className="container-max relative z-20">
+      <div className="container-max relative z-20 px-4">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
           {/* Section Title */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
-            className="text-3xl sm:text-4xl font-bold text-center mb-8 text-white"
+            className="text-4xl sm:text-5xl font-bold text-center mb-4 text-white"
           >
-            My Projects
+            Featured Projects
           </motion.h2>
 
           <motion.p
             initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.3 }}
-            className="text-center text-gray-300 mb-12 max-w-2xl mx-auto"
+            className="text-center text-gray-300 mb-12 max-w-2xl mx-auto text-xl"
           >
-            Drag to rotate • Click cards to explore • Scroll for details
+            AI-powered websites and intelligent automation solutions
           </motion.p>
 
-          {/* Project Details Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+          {/* Project Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 max-w-7xl mx-auto">
             {projects.length === 0 ? (
-              <div className="col-span-full text-center py-20">
-                <p className="text-gray-400 text-lg mb-6">
-                  No projects yet. Visit <Link href="/studio" className="text-blue-400 hover:text-blue-300 underline">/studio</Link> to add your first project!
+              <div className="col-span-full text-center py-12">
+                <p className="text-gray-400 text-lg mb-4">
+                  No featured projects yet. Visit <Link href="/studio" className="text-blue-400 hover:text-blue-300 underline">/studio</Link> to add projects!
                 </p>
               </div>
             ) : (
@@ -81,7 +70,7 @@ const Projects3D = ({ projects }: Projects3DProps) => {
                 <motion.div
                   key={project._id}
                   initial={{ opacity: 0, y: 30 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.4 + index * 0.1 }}
                   className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 hover:border-blue-500 transition-all duration-300"
                 >
@@ -139,10 +128,29 @@ const Projects3D = ({ projects }: Projects3DProps) => {
               ))
             )}
           </div>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.8 }}
+            className="text-center mt-12"
+          >
+            <Link href="/projects">
+              <motion.button
+                whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(139, 92, 246, 0.5)' }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-purple-500/50 transition-all duration-300 inline-flex items-center gap-2"
+              >
+                View All Projects
+                <ArrowRight size={20} />
+              </motion.button>
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </section>
   )
 }
 
-export default Projects3D
+export default ProjectsPreview
