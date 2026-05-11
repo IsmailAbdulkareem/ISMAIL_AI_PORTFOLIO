@@ -53,7 +53,7 @@ const About3D = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900/95 via-gray-900/90 to-gray-900/95 z-10" />
 
       {/* Content */}
-      <div className="container-max relative z-20">
+      <div className="container-max relative z-20 px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}

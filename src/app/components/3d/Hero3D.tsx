@@ -63,15 +63,18 @@ const Hero3D = () => {
               I Build{' '}
               <TypeAnimation
                 sequence={[
-                  'AI-Powered Websites', 3000,
-                  'Smart Chatbots', 2500,
-                  'Modern Web Apps', 2500,
-                  'Business Solutions', 2500,
+                  'AI-Powered Websites', 2000,
+                  'Smart Chatbots', 2000,
+                  'Modern Web Apps', 2000,
+                  'Business Solutions', 2000,
                 ]}
                 wrapper="span"
-                speed={60}
+                speed={50}
+                deletionSpeed={70}
                 className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent inline-block"
                 repeat={Infinity}
+                cursor={true}
+                preRenderFirstString={true}
               />
             </motion.h1>
 

@@ -2,13 +2,18 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { ArrowRight, Mail, Phone, MapPin } from 'lucide-react'
 import Link from 'next/link'
 
 const ContactPreview = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
+  const [isNavigating, setIsNavigating] = useState(false)
+
+  const handleNavigation = () => {
+    setIsNavigating(true)
+  }
 
   return (
     <section id="contact-preview" className="relative py-20 overflow-hidden">
@@ -16,7 +21,7 @@ const ContactPreview = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20" />
 
       {/* Content */}
-      <div className="container-max relative z-20 px-4">
+      <div className="container-max relative z-20 px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -70,14 +75,24 @@ const ContactPreview = () => {
             transition={{ delay: 0.5 }}
             className="flex flex-wrap gap-4 justify-center"
           >
-            <Link href="/contact">
+            <Link href="/contact" onClick={handleNavigation}>
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(59, 130, 246, 0.5)' }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-blue-500/50 transition-all duration-300 inline-flex items-center gap-2"
+                disabled={isNavigating}
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-blue-500/50 transition-all duration-300 inline-flex items-center gap-2 disabled:opacity-50 disabled:cursor-wait"
               >
-                Get Free Consultation
-                <ArrowRight size={20} />
+                {isNavigating ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    Loading...
+                  </>
+                ) : (
+                  <>
+                    Get Free Consultation
+                    <ArrowRight size={20} />
+                  </>
+                )}
               </motion.button>
             </Link>
             <a href="https://wa.me/923303911285" target="_blank" rel="noopener noreferrer">

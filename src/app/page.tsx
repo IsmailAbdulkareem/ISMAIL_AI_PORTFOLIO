@@ -6,6 +6,8 @@ import Testimonials from '@/app/components/Testimonials'
 import BlogPreviewWrapper from '@/app/components/sections/BlogPreviewWrapper'
 import ContactPreview from '@/app/components/sections/ContactPreview'
 
+export const revalidate = 60
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-gray-900">
