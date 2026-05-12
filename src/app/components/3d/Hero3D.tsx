@@ -45,9 +45,9 @@ const Hero3D = () => {
 
       {/* Content */}
       <div className="container-max section-padding relative z-20 min-w-0">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center min-w-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center min-w-0 justify-items-center md:justify-items-stretch">
           {/* Left Column: Text Content */}
-          <div className="space-y-6 text-center md:text-left min-w-0 w-full">
+          <div className="space-y-6 text-center md:text-left min-w-0 w-full max-w-xl">
             {/* Greeting */}
             <motion.div {...fadeIn(0.2)}>
               <span className="text-2xl sm:text-3xl" role="img" aria-label="Waving hand emoji">
@@ -119,7 +119,7 @@ const Hero3D = () => {
             initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.6 }}
-            className="order-first md:order-last min-w-0 w-full"
+            className="order-first md:order-last mx-auto w-full max-w-md"
           >
             <motion.div
               whileHover={{

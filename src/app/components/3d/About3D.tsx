@@ -41,7 +41,6 @@ const About3D = () => {
 
   return (
     <section id="about" className="relative min-h-screen py-20 overflow-hidden">
-      {/* 3D Background */}
       <div className="absolute inset-0 z-0">
         <Scene>
           <Lights />
@@ -49,19 +48,16 @@ const About3D = () => {
         </Scene>
       </div>
 
-      {/* Dark overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900/95 via-gray-900/90 to-gray-900/95 z-10" />
 
-      {/* Content */}
-      <div className="container-max relative z-20 px-4 sm:px-6 lg:px-8 min-w-0">
+      <div className="container-max relative z-20">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="space-y-12"
+          className="space-y-12 max-w-7xl mx-auto"
         >
-          {/* Section Title */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -72,21 +68,19 @@ const About3D = () => {
               About Me
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Full-Stack Developer specializing in AI-powered web solutions for modern businesses
+              Full-Stack Developer specializing in AI-powered web solutions for modern businesses.
             </p>
           </motion.div>
 
-          {/* Main Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto min-w-0 justify-items-center lg:justify-items-stretch">
-            {/* Left Column - Story */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.4 }}
-              className="space-y-6 min-w-0 w-full"
+              className="mx-auto w-full max-w-3xl space-y-6"
             >
-              <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-8 border border-gray-700">
-                <h3 className="text-2xl font-semibold text-white mb-4 flex items-center gap-2">
+              <div className="bg-gray-800/50 backdrop-blur-sm rounded-3xl p-8 border border-gray-700">
+                <h3 className="text-2xl font-semibold text-white mb-4 flex items-center gap-3">
                   <Sparkles className="text-blue-400" size={24} />
                   My Journey
                 </h3>
@@ -110,42 +104,33 @@ const About3D = () => {
                 </div>
               </div>
 
-              <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-8 border border-gray-700">
-                <h3 className="text-2xl font-semibold text-white mb-4 flex items-center gap-2">
+              <div className="bg-gray-800/50 backdrop-blur-sm rounded-3xl p-8 border border-gray-700">
+                <h3 className="text-2xl font-semibold text-white mb-4 flex items-center gap-3">
                   <Code className="text-green-400" size={24} />
                   What I Offer
                 </h3>
                 <ul className="space-y-3 text-gray-300">
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-400 mt-1">✓</span>
-                    <span><span className="font-semibold text-white">AI-Powered Websites</span> with intelligent chatbots and automation</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-400 mt-1">✓</span>
-                    <span><span className="font-semibold text-white">Full-Stack Development</span> using React, Next.js, Node.js, MongoDB</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-400 mt-1">✓</span>
-                    <span><span className="font-semibold text-white">SEO-Optimized Solutions</span> that rank and convert</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-400 mt-1">✓</span>
-                    <span><span className="font-semibold text-white">Responsive Design</span> that works perfectly on all devices</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-400 mt-1">✓</span>
-                    <span><span className="font-semibold text-white">Fast Delivery</span> with ongoing support and maintenance</span>
-                  </li>
+                  {[
+                    'AI-Powered Websites with intelligent chatbots and automation',
+                    'Full-Stack Development using React, Next.js, Node.js, MongoDB',
+                    'SEO-Optimized Solutions that rank and convert',
+                    'Responsive Design that works perfectly on all devices',
+                    'Fast Delivery with ongoing support and maintenance',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="text-green-400 mt-1">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </motion.div>
 
-            {/* Right Column - Highlights */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.4 }}
-              className="space-y-6 min-w-0 w-full"
+              className="mx-auto w-full max-w-3xl space-y-6"
             >
               {highlights.map((highlight, index) => (
                 <motion.div
@@ -154,7 +139,7 @@ const About3D = () => {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.6 + index * 0.1 }}
                   whileHover={{ scale: 1.02, x: 10 }}
-                  className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 hover:border-blue-500 transition-all duration-300"
+                  className="bg-gray-800/50 backdrop-blur-sm rounded-3xl p-6 border border-gray-700 hover:border-blue-500 transition-all duration-300"
                 >
                   <div className="flex items-start gap-4">
                     <div
@@ -175,12 +160,11 @@ const About3D = () => {
                 </motion.div>
               ))}
 
-              {/* Tech Stack */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 1 }}
-                className="bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-sm rounded-lg p-6 border border-blue-500/30"
+                className="bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-sm rounded-3xl p-6 border border-blue-500/30"
               >
                 <h4 className="text-xl font-semibold text-white mb-4">Core Technologies</h4>
                 <div className="flex flex-wrap gap-2">
@@ -200,7 +184,6 @@ const About3D = () => {
             </motion.div>
           </div>
 
-          {/* CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -211,7 +194,7 @@ const About3D = () => {
               whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(59, 130, 246, 0.5)' }}
               whileTap={{ scale: 0.95 }}
               onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-blue-500/50 transition-all duration-300"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-blue-500/50 transition-all duration-300"
             >
               Let's Build Something Amazing Together
             </motion.button>
