@@ -16,7 +16,8 @@
       "Bash(curl -s http://localhost:3001)",
       "Bash(curl -s http://localhost:3000/blog)",
       "Bash(npm view *)",
-      "Bash(npm uninstall *)"
+      "Bash(npm uninstall *)",
+      "Bash(git commit *)"
     ]
   }
 }
