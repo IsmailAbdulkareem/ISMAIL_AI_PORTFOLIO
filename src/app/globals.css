@@ -5,10 +5,16 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* ✅ FIX: horizontal overflow band karo */
+    overflow-x: hidden;
+    width: 100%;
   }
-  
+
   body {
     @apply bg-gray-50 text-gray-900;
+    /* ✅ FIX: body bhi overflow-x band */
+    overflow-x: hidden;
+    width: 100%;
   }
 }
 
@@ -16,28 +22,28 @@
   .section-padding {
     @apply px-4 py-16 sm:px-6 lg:px-8;
   }
-  
+
   .container-max {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-  
+
   .heading-gradient {
     background: linear-gradient(to right, #2563eb, #1e40af);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   .card-hover {
     @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
   }
-  
+
   .btn-primary {
-    @apply bg-primary-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-700 transition-colors duration-200;
+    @apply bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200;
   }
-  
+
   .btn-secondary {
-    @apply border border-primary-600 text-primary-600 px-6 py-3 rounded-lg font-medium hover:bg-primary-600 hover:text-white transition-colors duration-200;
+    @apply border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-600 hover:text-white transition-colors duration-200;
   }
 }
 
@@ -47,7 +53,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #1a1a2e;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -105,10 +111,10 @@ body.chatbot-open {
   background-size: 200% 200%;
 }
 
-/* Reduce motion on mobile for better performance */
+/* ✅ FIX: Sirf gpu-accelerate elements pe apply — layout affect nahi hoga */
 @media (max-width: 640px) {
-  * {
+  .gpu-accelerate {
     animation-duration: 0.2s !important;
     transition-duration: 0.2s !important;
   }
-} 
+}
